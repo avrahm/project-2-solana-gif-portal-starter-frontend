@@ -155,6 +155,24 @@ const App = () => {
     }
   };
 
+  const clearGifList = async () => {
+    try {
+      const provider = getProvider();
+      const program = new Program(idl, programID, provider);
+
+      await program.rpc.clearGifs({
+        accounts: {
+          baseAccount: baseAccount.publicKey,
+          user: provider.wallet.publicKey,
+        },
+      });
+      console.log("GIF list cleared!")
+      await getGifList();
+    } catch (error) {
+      console.error('Error clearing the GIF list:', error);
+    }
+  };
+
   /*
    * When our component first mounts, let's check to see if we have a connected Phantom Wallet
    */
@@ -202,6 +220,7 @@ const App = () => {
               </div>
             ))}
           </div>
+          <button className="cta-button clear-gif-button" onClick={clearGifList}>Clear GIF List</button>
         </div>
       )
     };
@@ -237,7 +256,5 @@ const App = () => {
     </div>
   );
 };
-
-
 
 export default App;

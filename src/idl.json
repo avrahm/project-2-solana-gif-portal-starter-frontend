@@ -43,6 +43,22 @@
           "type": "string"
         }
       ]
+    },
+    {
+      "name": "clearGifs",
+      "accounts": [
+        {
+          "name": "baseAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": []
     }
   ],
   "accounts": [
